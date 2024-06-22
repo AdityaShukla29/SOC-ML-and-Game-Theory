@@ -1,13 +1,12 @@
 This repository contains the Assignments and the Mid-Term project of my SOC on ML and GAME THEORY:
 
-Assignment 1 : covers  (1) Simplex method to solve linear programs (2)Solving Quadratic Solvers (3)Inverse Transform Sampling  
+Assignment 1 : covers  (1) Simplex method to solve linear programs 
+                       (2)Solving Quadratic Solvers 
+                       (3)Inverse Transform Sampling  
                        (4)Principal Component Analysis (PCA) (5)Curve Fitting
 
 Assignment 2 : Using Multiple Linear Regression(MLR) to obtain the governing ordinary differential equation for the evolution of population of two creatures,the 
-               data
-               of which is provided in the means of a csv file. We train and validate the model using 3 different splits, displaying the MSE(Mean Squared Error) 
-                when 
-               compared to the actual data.
+               dataof which is provided in the means of a csv file. We train and validate the model using 3 different splits, displaying the MSE(Mean Squared Error)whencompared to the actual data.
 
 Mid-Term Project:
 This project revolves around enhancing the quality of transformer current data
