@@ -7,7 +7,7 @@ from scipy.optimize import curve_fit
 def func(t, v, k):
     """ computes the function S(t) with constants v and k """
     # TODO
-
+    return v*(t-(1-np.exp(-k*t))/k)
     # END TODO
 
 
@@ -18,6 +18,11 @@ def find_constants(df: pd.DataFrame, func: Callable):
     k = 0
 
     # TODO: fit a curve using SciPy to estimate v and k
+    t_data=df.iloc[:,0]
+    s_data=df.iloc[:,1]
+    popt,pcov=curve_fit(func,t_data,s_data)
+    v=popt[0]
+    k=popt[1]
 
     # END TODO
 
@@ -33,11 +38,11 @@ if __name__ == "__main__":
 
     # TODO: plot a histogram and save to fit_curve.png
     final=[]
-    
+
     for i in df['t'].values:
         final.append(func(i,v,k))
-        
-        
+
+
 plt.scatter(df['t'].values, df['S'].values, label='data', color='orange')
 plt.plot(df['t'].values, final, label=f'fit: v={v}, k={k}')
 
