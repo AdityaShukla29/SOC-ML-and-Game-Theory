@@ -15,6 +15,7 @@ pulp references:
 (2) https://coin-or.github.io/pulp/technical/pulp.html
 """
 import numpy
+import numpy as np
 import pulp
 import pandas as pd
 import argparse
@@ -42,7 +43,22 @@ def pulp_solver(A_matrix: numpy.array, c: numpy.array, b: numpy.array) -> (numpy
     ################################################################
     # %% Student Code Start
     # Implement here
-     
+    z_max=pulp.LpProblem('z_max',pulp.LpMaximize)
+    mat_x=[pulp.LpVariable("x"+str(i),lowBound=0) for i in range(len(c))]
+    # Don't understand why using matmul and accessing individual elements doesn't work - Aditya
+    cTx=0
+    for i in range(len(c)):
+        cTx+= c[i]*mat_x[i]
+    z_max+=cTx
+    for i in range(len(b)):
+        Ax = 0
+        for j in range(len(c)):
+            Ax += A_matrix[i][j] * mat_x[j]
+        z_max += Ax <= b[i]
+    z_max.solve()
+    x= np.array([pulp.value(var) for var in mat_x])
+    opt_val=pulp.value(z_max.objective)
+
   
     # %% Student Code End
     ################################################################
